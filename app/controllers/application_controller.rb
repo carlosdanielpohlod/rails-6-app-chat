@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    
     include ActionController::MimeResponds
     def not_found
         render json: { error: 'not_found' }

@@ -1,15 +1,41 @@
 import consumer from "./consumer"
 
-consumer.subscriptions.create("RoomChannel", {
-  connected() {
-    // Called when the subscription is ready for use on the server
-  },
 
-  disconnected() {
-    // Called when the subscription has been terminated by the server
-  },
+var selectedRoom = "geral";
 
-  received(data) {
-    // Called when there's incoming data on the websocket for this channel
-  }
-});
+
+consumer.subscriptions.create({channel:"RoomChannel", room:`${selectedRoom}`}, {
+    constructor(){
+      let rooms = document.getElementById("rooms");
+      rooms.addEventListener('click', function(e) {selectedRoom = e.target.id})
+    },
+    connected() {
+      
+      console.log('conectado ao', selectedRoom)
+    },
+    received(data) {
+      this.appendLine(data)
+    },
+    disconnected() {
+      console.log("disconectado")
+    },
+    createLine(data){
+  
+      return `
+        <div class="baloon">
+          <span class="sender"><b> ${data["sender_name"]} </b></span>
+          <span class="body">${data["content"]}</span>
+        </div>
+      `
+    },
+    appendLine(data) {
+ 
+      const html = this.createLine(data)
+      const element = document.querySelector("[data-chat-room='Best Room']")
+      element.insertAdjacentHTML("beforeend", html)
+    
+    }
+  });
+  
+
+

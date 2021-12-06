@@ -1,3 +1,79 @@
-// Place all the styles related to the messages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+
+html{
+    width: 100%;
+}
+.sender{
+    color: black;
+}
+.baloon{
+    padding:5px;
+    margin:2px;
+    max-height:30%;
+    border-radius:5px;
+    background-color: lightgreen;
+    color:white;
+}
+
+body{
+    display: grid;
+    padding: 2px;
+    margin: 5px;
+    max-width: 100%;
+    max-height: 70vh;
+    
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 1fr 4fr 1fr;
+    grid-template-areas:
+        "header header"
+        "side-menu chat-area"
+        "send-message-area send-message-area"
+}
+
+.side-menu{
+    grid-area: side-menu;
+    margin: 5px;
+}
+.send-message-area{
+    grid-area: send-message-area;
+    display: flex;
+    align-items: center;
+}
+.chat-area{
+    
+    grid-area: chat-area;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    overflow: scroll;
+    background-color: lightgray;
+}
+
+header{
+    grid-area: header;
+    width: 100%;
+    height: 10%;
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.button {
+    background-color: white; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+}
+.input{
+    border: 2px solid blue;
+    border-radius: 4px;
+}
+.container{
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
